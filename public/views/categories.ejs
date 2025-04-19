@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Categories</title>
+</head>
+<body>
+    <h1>Joke Categories</h1>
+
+    <ul>
+        <% if (categories && categories.length > 0) { %>
+            <% categories.forEach(category => { %>
+                <li><a href="/jokebook/joke/<%= category %>"><%= category %></a></li>
+            <% }); %>
+        <% } else { %>
+            <li>No categories available.</li>
+        <% } %>
+    </ul>
+
+    <a href="/" class="back-link">Go back to Home</a>
+</body>
+</html>

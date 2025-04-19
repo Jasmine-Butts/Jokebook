@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokebook</title>
+</head>
+<body>
+    <h1>Welcome to the Jokebook!</h1>
+
+    <h2>Random Joke</h2>
+    <% if (randomJoke) { %>
+        <div class = "joke-container">
+            <p>Category: <%= randomJoke.category %></p>
+            <p>Setup: <%= randomJoke.setup %></p>
+            <p>Delivery: <%= randomJoke.delivery %></p>
+        </div>
+    <% } else { %>
+        <p>No joke available at the moment.</p>
+    <% } %>
+
+    <h2>Joke Categories</h2>
+    <div class = "category-list">
+        <ul>
+            <% if (categories && categories.length > 0) { %>
+                <% categories.forEach(category => { %>
+                    <li><a href="/jokebook/joke/<%= category %>"><%= category %></a></li>
+                <% }); %>
+            <% } else { %>
+                <li>No categories available.</li>
+            <% } %>
+        </ul>
+    </div>
+
+    <div class = "search-container">
+        <h2>Search for a Joke</h2>
+        <form action="/jokebook/joke/" method="GET">
+            <input type="text" name="category" placeholder="Enter a category name" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class = "form-container">
+        <h2>Add a New Joke</h2>
+
+        <form action="/jokebook/joke/add" method="POST">
+            <div>
+                <label for="category">Category:</label>
+                <input type="text" name="category" id="category" required>
+            </div>     
+            <div>
+                <label for="setup">Setup:</label>
+                <textarea id="setup" name="setup" rows="3" required></textarea>
+            </div>   
+            <div>
+                <label for="delivery">Delivery:</label>
+                <textarea id="delivery" name="delivery" rows="3" required></textarea> 
+            </div>   
+            <button type="submit">Add Joke</button>
+        </form>
+    </div>
+
+</body>
+</html>

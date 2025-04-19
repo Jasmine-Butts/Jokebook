@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokes in <%= category %></title>
+</head>
+<body>
+    <h1>Jokes in <%= category %> category</h1>
+
+    <% if (jokes && jokes.length > 0) { %>
+        <% jokes.forEach(joke => { %> 
+            <div class = "joke-container">
+                <p>Setup: <%= joke.setup %></p>
+                <p>Delivery: <%= joke.delivery %></p>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No jokes available in this category.</p>
+    <% } %>
+
+    <a href="/" class = "back-link">Go back to Home</a>
+</body>
+</html>
